@@ -210,20 +210,34 @@ It's also possible to set the locale at runtime using the `setLocale` method of 
 The datepicker was built to be date implementation agnostic. This means that it can be made to work
 with a variety of different date implementations. However it also means that developers need to make
 sure to provide the appropriate pieces for the datepicker to work with their chosen implementation.
-The easiest way to ensure this is just to import one of the pre-made modules:
 
-|Module               |Date type|Supported locales                                                      |Dependencies                      |Import from                       |
-|---------------------|---------|-----------------------------------------------------------------------|----------------------------------|----------------------------------|
-|`MatNativeDateModule`|`Date`   |en-US                                                                  |None                              |`@angular/material`               |
-|`MatMomentDateModule`|`Moment` |[See project](https://github.com/moment/moment/tree/develop/src/locale)|[Moment.js](https://momentjs.com/)|`@angular/material-moment-adapter`|
+The easiest way to ensure this is to import one of the provided date modules:
 
-*Please note: `MatNativeDateModule` is based off of the functionality available in JavaScript's
-native `Date` object, and is thus not suitable for many locales. One of the biggest shortcomings of
-the native `Date` object is the inability to set the parse format. We highly recommend using the
-`MomentDateAdapter` or a custom `DateAdapter` that works with the formatting/parsing library of your
-choice.*
+`MatNativeDateModule`
 
-These modules include providers for `DateAdapter` and `MAT_DATE_FORMATS`
+|                     |                        |
+|---------------------|------------------------|
+|Date type            |`Date`                  |
+|Supported locales    |en-US                   |
+|Dependencies         |None                    |
+|Import from          |`@angular/material/core`|
+
+`MatMomentDateModule`
+
+|                     |                                  |
+|---------------------|----------------------------------|
+|Date type            |`Moment`                          |
+|Supported locales    |[See project](https://github.com/moment/moment/tree/develop/src/locale) for details|
+|Dependencies         |[Moment.js](https://momentjs.com/)|
+|Import from          |`@angular/material-moment-adapter`|
+
+*Please note: `MatNativeDateModule` is based off the functionality available in JavaScript's
+native [`Date` object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date).
+Thus it is not suitable for many locales. One of the biggest shortcomings of the native `Date`
+object is the inability to set the parse format. We highly recommend using the `MomentDateAdapter`
+or a custom `DateAdapter` that works with the formatting/parsing library of your choice.*
+
+These modules include providers for `DateAdapter` and `MAT_DATE_FORMATS`.
 
 ```ts
 @NgModule({
@@ -292,7 +306,7 @@ export class MyApp {}
 
 #### Customizing the parse and display formats
 
-The `MAT_DATE_FORMATS` object is just a collection of formats that the datepicker uses when parsing
+The `MAT_DATE_FORMATS` object is a collection of formats that the datepicker uses when parsing
 and displaying dates. These formats are passed through to the `DateAdapter` so you will want to make
 sure that the format objects you're using are compatible with the `DateAdapter` used in your app.
 
