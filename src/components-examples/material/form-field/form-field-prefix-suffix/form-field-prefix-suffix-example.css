@@ -1,10 +1,5 @@
-.example-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.example-container > * {
-  width: 100%;
+.example-container .mat-form-field:nth-of-type(n+2) {
+  margin-left: 8px;
 }
 
 .example-right-align {
